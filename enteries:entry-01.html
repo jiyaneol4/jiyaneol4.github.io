@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entry 01: Starting Point - Field Notes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..500&family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500..600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --paper: #FBFAF7;
+    --ink: #1A1A1A;
+    --ink-soft: #3D3D3D;
+    --rule: #D8D4CB;
+    --rule-strong: #1A1A1A;
+    --accent: #7A3B2E;
+    --sage: #5C6E52;
+    --gray: #767066;
+    --box-bg: #F2EFE6;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 17px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .masthead {
+    border-bottom: 3px solid var(--rule-strong);
+    padding: 22px 40px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .masthead-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  .masthead-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+  .masthead-name a { color: var(--ink); text-decoration: none; }
+
+  .nav {
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 40px;
+    display: flex;
+    gap: 28px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .nav a { color: var(--ink-soft); text-decoration: none; }
+  .nav a:hover { color: var(--accent); }
+
+  .entry-page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 28px 100px;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--gray);
+    text-decoration: none;
+    margin-bottom: 36px;
+  }
+  .back-link:hover { color: var(--accent); }
+
+  .entry-meta-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .entry-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 3px 9px;
+    border-radius: 2px;
+  }
+  .entry-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--gray);
+  }
+
+  .entry-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(1.6rem, 3.6vw, 2.1rem);
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 30px;
+  }
+
+  .entry-page p {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+    line-height: 1.85;
+  }
+
+  .drop::first-letter {
+    font-family: 'Fraunces', serif;
+    font-size: 3.4rem;
+    font-weight: 600;
+    float: left;
+    line-height: 0.8;
+    margin: 5px 10px 0 0;
+    color: var(--accent);
+  }
+
+  .reflection {
+    background: var(--box-bg);
+    border-left: 3px solid var(--accent);
+    padding: 20px 26px;
+    margin: 30px 0;
+  }
+  .reflection-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+    display: block;
+  }
+  .reflection p {
+    font-style: italic;
+    margin-bottom: 0;
+  }
+
+  .entry-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+  }
+  .entry-nav a { color: var(--accent); text-decoration: none; }
+  .entry-nav .disabled { color: var(--gray); }
+
+  .footer {
+    border-top: 3px solid var(--rule-strong);
+    padding: 30px 40px;
+    text-align: center;
+  }
+  .footer p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--gray);
+    margin: 0;
+  }
+  .footer a { color: var(--accent); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    .masthead, .nav { padding-left: 20px; padding-right: 20px; }
+    .entry-page { padding: 40px 18px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <span class="masthead-name"><a href="../index.html">Field Notes &mdash; A Reflexive Journal</a></span>
+  <span class="masthead-meta">Independent Research</span>
+</header>
+
+<nav class="nav">
+  <a href="../index.html#about">About</a>
+  <a href="../index.html#reflections">Reflections</a>
+  <a href="../index.html#progress">Progress</a>
+  <a href="../index.html#timeline">Timeline</a>
+</nav>
+
+<main class="entry-page">
+  <a class="back-link" href="../index.html#progress">&larr; Back to Progress</a>
+
+  <div class="entry-meta-row">
+    <span class="entry-num">Entry 01</span>
+    <span class="entry-date">June 2026</span>
+  </div>
+
+  <h1 class="entry-title">Starting point: what I'm fascinated by, and why I want to do this on my own</h1>
+
+  <p class="drop">I want to use this first entry to be honest about something that took me a little while to admit properly: I am not doing this because anyone asked me to, and I think that is exactly why I want to do it.</p>
+
+  <p>Almost everything I have researched until now has happened inside a structure someone else built. My dissertation had a supervisor and a deadline. My research work at Loughborough's Department of Psychology was part of a funded project with academics already attached to it. Even the most independent-feeling parts of my degree were still, ultimately, assessed, marked, and bounded by someone else's framework. I do not say that as a complaint. I think that structure taught me how to do research properly: how to be rigorous, how to think about ethics, how to actually finish something. But it also means I have never yet had the experience of choosing a question entirely for myself, with no one waiting on the other end of it.</p>
+
+  <p>This is that. And I want to be honest that it is a slightly strange feeling. There is no supervisor to tell me whether reflexive thematic analysis is the right call, or whether I am even asking the right question yet. No department deciding whether this is worth doing at all. Just my own judgement, which I trust more than I expected to, and a genuine, slightly stubborn fascination with a question I cannot quite put down.</p>
+
+  <p>I think real research, the kind that produces something true rather than something merely correct, requires this at some point: a question that exists because you actually want the answer, not because it was assigned to you. I have spent the past few years building the skills, the methodology, the ethical instincts, to do this properly. This is the first time I am pointing all of that at something that is entirely mine, from the first reading to whatever it eventually becomes.</p>
+
+  <div class="reflection">
+    <span class="reflection-label">A note on independence</span>
+    <p>I think there is a meaningful difference between doing research because you have been given a question, and doing research because a question has gotten hold of you. I am not sure yet which category this fully belongs to, but it feels much closer to the second. That distinction is, I suspect, part of why I am writing this journal at all rather than quietly reading in private. If this is going to be mine, I want to actually own it publicly too.</p>
+  </div>
+
+  <p>I do not know yet exactly where the gap in the existing literature sits. I am reading to find that out rather than assuming I already know, which is its own kind of discipline I am having to practise. But I wanted this first entry to be less about the topic itself, and more about why doing this independently matters to me. I think it is the most honest place to start, and everything that follows in this journal will build from here.</p>
+
+  <div class="entry-nav">
+    <a href="../index.html#progress">&larr; Back to Progress</a>
+    <a href="entry-02.html">Entry 02 &rarr;</a>
+  </div>
+</main>
+
+<footer class="footer">
+  <p>Field Notes &middot; Jiya Neol, 2026 &middot; <a href="mailto:jiyaneol4@gmail.com">jiyaneol4@gmail.com</a> &middot; <a href="https://linkedin.com/in/jiya-neol">LinkedIn</a></p>
+</footer>
+
+</body>
+</html>
