@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Chatbots as Substitutes for Therapy: A Reflexive Journal - Jiya Neol</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..500&family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500..600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --paper: #FBFAF7;
+    --ink: #1A1A1A;
+    --ink-soft: #3D3D3D;
+    --rule: #D8D4CB;
+    --rule-strong: #1A1A1A;
+    --accent: #7A3B2E;
+    --sage: #5C6E52;
+    --gray: #767066;
+    --box-bg: #F2EFE6;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 17px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .masthead {
+    border-bottom: 3px solid var(--rule-strong);
+    padding: 22px 40px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .masthead-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+  }
+  .masthead-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  .nav {
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 40px;
+    display: flex;
+    gap: 28px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .nav a { color: var(--ink-soft); text-decoration: none; }
+  .nav a:hover { color: var(--accent); }
+
+  .paper {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 56px 28px 100px;
+  }
+
+  .paper-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(1.7rem, 3.4vw, 2.3rem);
+    line-height: 1.28;
+    color: var(--ink);
+    margin-bottom: 18px;
+    text-align: center;
+  }
+
+  .paper-byline {
+    text-align: center;
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+
+  .paper-affiliation {
+    text-align: center;
+    font-size: 0.88rem;
+    color: var(--gray);
+    font-style: italic;
+    margin-bottom: 34px;
+  }
+
+  .status-box {
+    background: var(--box-bg);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 18px 24px;
+    margin-bottom: 44px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.76rem;
+    color: var(--ink-soft);
+  }
+  .status-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .status-grid div strong {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--gray);
+    font-size: 0.65rem;
+    margin-bottom: 4px;
+  }
+  @media (max-width: 600px) {
+    .status-grid { grid-template-columns: 1fr; gap: 12px; }
+  }
+
+  .abstract {
+    margin-bottom: 48px;
+    padding: 0 18px;
+  }
+  .abstract-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .abstract p {
+    font-size: 0.97rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    line-height: 1.75;
+  }
+
+  hr.section-rule {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 50px 0;
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--ink);
+    margin: 0 0 6px;
+    line-height: 1.3;
+  }
+  .section-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--gray);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: block;
+  }
+  h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.12rem;
+    color: var(--ink);
+    margin: 30px 0 12px;
+  }
+
+  p {
+    font-size: 1.02rem;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+  }
+
+  .drop::first-letter {
+    font-family: 'Fraunces', serif;
+    font-size: 3.1rem;
+    font-weight: 600;
+    float: left;
+    line-height: 0.78;
+    margin: 4px 9px 0 0;
+    color: var(--accent);
+  }
+
+  ul.formal-list, ol.formal-list {
+    margin: 0 0 20px 0;
+    padding-left: 24px;
+  }
+  ul.formal-list li, ol.formal-list li {
+    font-size: 1.01rem;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+    line-height: 1.7;
+  }
+
+  .reflection {
+    background: var(--box-bg);
+    border-left: 3px solid var(--accent);
+    padding: 20px 26px;
+    margin: 26px 0;
+  }
+  .reflection-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+    display: block;
+  }
+  .reflection p {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 0.99rem;
+    color: var(--ink);
+    margin-bottom: 0;
+  }
+  .reflection p + p { margin-top: 12px; }
+
+  .provisional {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.64rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sage);
+    border: 1px solid var(--sage);
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+
+  /* PROGRESS ENTRIES INDEX */
+  .progress-list {
+    border-top: 1px solid var(--rule);
+    margin-top: 24px;
+  }
+  .progress-entry {
+    border-bottom: 1px solid var(--rule);
+    padding: 20px 0;
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 18px;
+  }
+  .progress-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem;
+    color: var(--gray);
+    padding-top: 3px;
+  }
+  .progress-entry h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .progress-entry p {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+  }
+  .progress-entry a.entry-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.76rem;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+  }
+  .progress-entry .entry-status {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gray);
+    border: 1px solid var(--rule);
+    padding: 2px 7px;
+    border-radius: 2px;
+    margin-bottom: 8px;
+  }
+  @media (max-width: 560px) {
+    .progress-entry { grid-template-columns: 1fr; gap: 4px; }
+  }
+
+  /* TIMELINE */
+  .timeline-list {
+    border-left: 2px solid var(--rule);
+    margin: 24px 0 0 6px;
+    padding-left: 28px;
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 26px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -34px;
+    top: 4px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .timeline-item.is-future::before {
+    background: transparent;
+    border: 2px solid var(--rule);
+  }
+  .timeline-phase {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+  .timeline-item h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .timeline-item p {
+    font-size: 0.93rem;
+    margin-bottom: 0;
+  }
+
+  .references h2 { margin-bottom: 20px; }
+  .ref-item {
+    font-size: 0.93rem;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+    padding-left: 1.6em;
+    text-indent: -1.6em;
+    line-height: 1.6;
+  }
+
+  .revision-log {
+    background: var(--box-bg);
+    border: 1px solid var(--rule);
+    padding: 20px 24px;
+    margin-top: 50px;
+  }
+  .revision-log h3 {
+    margin-top: 0;
+    font-size: 0.95rem;
+  }
+  .revision-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+    display: flex;
+    gap: 12px;
+  }
+  .revision-item .rdate { color: var(--gray); min-width: 90px; }
+
+  .footer {
+    border-top: 3px solid var(--rule-strong);
+    padding: 30px 40px;
+    text-align: center;
+  }
+  .footer p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--gray);
+    margin: 0;
+  }
+  .footer a { color: var(--accent); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    .masthead, .nav { padding-left: 20px; padding-right: 20px; }
+    .paper { padding: 40px 18px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <span class="masthead-name">Field Notes &mdash; A Reflexive Journal</span>
+  <span class="masthead-meta">Independent Research</span>
+</header>
+
+<nav class="nav">
+  <a href="#about">About</a>
+  <a href="#reflections">Reflections</a>
+  <a href="#progress">Progress</a>
+  <a href="#timeline">Timeline</a>
+</nav>
+
+<main class="paper">
+
+  <h1 class="paper-title">AI Chatbots as Substitutes for Therapy:<br>A Reflexive Research Journal</h1>
+  <p class="paper-byline">Jiya Neol</p>
+  <p class="paper-affiliation">B.Sc. Psychology Graduate &middot; Independent Researcher</p>
+
+  <div class="status-box">
+    <div class="status-grid">
+      <div><strong>Stage</strong>Literature review</div>
+      <div><strong>Last updated</strong>June 2026</div>
+      <div><strong>Contact</strong><a href="https://linkedin.com/in/jiya-neol">LinkedIn</a></div>
+    </div>
+  </div>
+
+  <div class="abstract" id="abstract">
+    <div class="abstract-label">Abstract</div>
+    <p>This journal documents an independent qualitative research project examining how individuals describe using ChatGPT and comparable AI chatbots as a substitute for, or supplement to, conventional therapy. The project is, at the time of writing, in its earliest stage: reading, thinking, and beginning to identify where a genuine gap in existing knowledge might sit, rather than starting from a predetermined research question. This document will be revised and re-dated as the work progresses, and is published openly in the interest of doing the process honestly, in public, rather than only presenting a finished account in retrospect.</p>
+  </div>
+
+  <hr class="section-rule">
+
+  <section id="about">
+    <h2>Background: Why I Want to Do This</h2>
+    <span class="section-meta">Section status: drafted</span>
+
+    <p class="drop">Over the past several years, a pattern has become harder to ignore. Across Reddit threads, comment sections, and informal conversation, individuals increasingly describe turning to ChatGPT in moments of emotional distress, often explicitly drawing comparisons to therapeutic relationships. I noticed this first through professional exposure rather than academic curiosity, and the academic curiosity followed afterwards.</p>
+
+    <p>I do not yet have a tightly defined research question, and I want to be honest about that rather than retrofit one for the sake of appearing further along than I am. What I have is a genuine fascination with the subject, a research background that makes me confident I can study it properly, and an intention to let an actual literature gap emerge through reading rather than assume one exists before I have looked.</p>
+
+    <div class="reflection">
+      <span class="reflection-label">Reflection</span>
+      <p>I want to be transparent that this project began from professional and personal observation rather than a pre-existing gap identified through systematic review. Across roles in NHS human resources, frontline mental health support work, and academic research, I noticed a recurring pattern in informal accounts and online discourse that I have not yet found addressed with the depth I expected. Whether that impression survives contact with the actual literature is, honestly, an open question, and part of why I am doing this at all.</p>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <section id="reflections">
+    <h2>Reflections</h2>
+    <span class="section-meta">Updated periodically as the project develops</span>
+
+    <div class="reflection">
+      <span class="reflection-label">June 2026</span>
+      <p>I am choosing to publish this journal at an early and admittedly unfinished stage, rather than waiting until I have something more resolved to show. Part of the reason is accountability: making the project public makes it harder to quietly let it drift. Part of it is a genuine belief that the process of doing research, including the uncertain and unglamorous parts, is worth documenting honestly rather than only presenting a tidy account once it is over.</p>
+      <p>I do not yet know what I will find, or even exactly what question I will end up asking. I am trying, deliberately, to let the gap in the literature reveal itself through reading, rather than deciding in advance what I expect to be missing.</p>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <section id="progress">
+    <h2>Progress</h2>
+    <span class="section-meta">An index of entries, updated as the work develops</span>
+    <span class="provisional">Just getting started</span>
+
+    <div class="progress-list">
+
+      <div class="progress-entry">
+        <div class="progress-date">June 2026</div>
+        <div>
+          <span class="entry-status">Entry 01</span>
+          <h4>Starting point: what I'm fascinated by and what I'm not assuming yet</h4>
+          <p>The first entry in this journal, setting out the observation that started this, and a deliberate decision not to assume a literature gap before actually reading widely.</p>
+          <a class="entry-link" href="#">Read entry 01 &rarr;</a>
+        </div>
+      </div>
+
+      <div class="progress-entry">
+        <div class="progress-date">Coming soon</div>
+        <div>
+          <span class="entry-status">Entry 02</span>
+          <h4>Next entry in progress</h4>
+          <p>Future entries will document what I am reading, where I think the gap might genuinely sit, and how my thinking changes as the review continues.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <section id="timeline">
+    <h2>Proposed Timeline</h2>
+    <span class="section-meta">Indicative only, expected to shift as the project develops</span>
+
+    <div class="timeline-list">
+      <div class="timeline-item">
+        <div class="timeline-phase">Now &middot; June 2026</div>
+        <h4>Literature review</h4>
+        <p>Reading widely across existing research on AI chatbots, digital mental health tools, and therapeutic alliance, with the aim of identifying a genuine, specific gap rather than assuming one.</p>
+      </div>
+      <div class="timeline-item is-future">
+        <div class="timeline-phase">Next</div>
+        <h4>Defining the research question and method</h4>
+        <p>Narrowing toward a specific question once the gap is clearer, and deciding on a qualitative approach suited to that question, most likely a form of thematic analysis.</p>
+      </div>
+      <div class="timeline-item is-future">
+        <div class="timeline-phase">Later</div>
+        <h4>Data familiarisation and coding</h4>
+        <p>Engaging with public data, most likely Reddit discourse, and beginning the analytic process documented openly in this journal.</p>
+      </div>
+      <div class="timeline-item is-future">
+        <div class="timeline-phase">Eventually</div>
+        <h4>Write-up and dissemination</h4>
+        <p>Deciding where and how this work is best shared once findings exist, which may take a different form than currently anticipated.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <section class="references" id="references">
+    <h2>References</h2>
+    <p class="ref-item">A reference list will be populated as the literature review progresses.</p>
+  </section>
+
+  <div class="revision-log">
+    <h3>Revision log</h3>
+    <div class="revision-item"><span class="rdate">June 2026</span><span>Journal launched. Background and first progress entry published. Timeline added as indicative only.</span></div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <p>Field Notes &middot; Jiya Neol, 2026 &middot; <a href="mailto:jiyaneol4@gmail.com">jiyaneol4@gmail.com</a> &middot; <a href="https://linkedin.com/in/jiya-neol">LinkedIn</a></p>
+</footer>
+
+</body>
+</html>
