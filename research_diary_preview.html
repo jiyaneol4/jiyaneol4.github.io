@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Field Notes: AI &amp; the Therapy Room - Jiya Neol</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --paper: #FAF6EE;
+    --paper-dark: #F2EBDA;
+    --ink: #1C2B33;
+    --ink-soft: #3A4A52;
+    --red: #A8442E;
+    --sage: #6B7A5E;
+    --rule: #D4CBB8;
+    --gray: #8A8378;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Newsreader', Georgia, serif;
+    background: var(--paper-dark);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  a { color: var(--red); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+  }
+  .nav-title .accent { color: var(--red); font-style: italic; }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .nav-links a { color: var(--ink-soft); text-decoration: none; }
+  .nav-links a:hover { color: var(--red); }
+
+  @media (max-width: 540px) {
+    .nav { flex-direction: column; gap: 10px; padding: 14px 20px; }
+    .nav-links { gap: 16px; }
+  }
+
+  .hero {
+    padding: 70px 24px 40px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .notebook {
+    max-width: 980px;
+    width: 100%;
+    background: var(--paper);
+    border-radius: 3px;
+    box-shadow:
+      0 1px 0 var(--rule),
+      0 30px 60px -20px rgba(28,43,51,0.25),
+      0 0 0 1px rgba(28,43,51,0.04);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .notebook::before {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; left: 50%;
+    width: 60px;
+    margin-left: -30px;
+    background: linear-gradient(90deg,
+      rgba(28,43,51,0) 0%,
+      rgba(28,43,51,0.06) 45%,
+      rgba(28,43,51,0.10) 50%,
+      rgba(28,43,51,0.06) 55%,
+      rgba(28,43,51,0) 100%);
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .page {
+    padding: 56px 48px 56px;
+    position: relative;
+  }
+  .page-right {
+    background: var(--paper);
+  }
+
+  .page-right::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 33px,
+      var(--rule) 33px,
+      var(--rule) 34px
+    );
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 18px;
+    display: block;
+  }
+
+  .hero-title {
+    font-family: 'Fraunces', serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+    line-height: 1.12;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--red);
+    font-weight: 500;
+  }
+
+  .hero-sub {
+    font-size: 1.02rem;
+    color: var(--ink-soft);
+    max-width: 380px;
+    margin-bottom: 28px;
+  }
+
+  .margin-note {
+    position: relative;
+    padding-left: 18px;
+    border-left: 2px solid var(--red);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem;
+    color: var(--red);
+    line-height: 1.6;
+    margin-top: 32px;
+    transform: rotate(-0.4deg);
+  }
+
+  .stamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sage);
+    border: 1.5px solid var(--sage);
+    border-radius: 3px;
+    padding: 5px 11px;
+    transform: rotate(-2deg);
+    margin-top: 24px;
+  }
+
+  .page-right .entry-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--gray);
+    letter-spacing: 0.04em;
+    margin-bottom: 14px;
+  }
+
+  .page-right p {
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+
+  .page-right p:last-of-type { margin-bottom: 0; }
+
+  .scroll-cue {
+    text-align: center;
+    padding: 8px 0 56px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  @media (max-width: 760px) {
+    .notebook { grid-template-columns: 1fr; }
+    .notebook::before { display: none; }
+    .page { padding: 40px 28px; }
+    .page-left { border-bottom: 1px solid var(--rule); }
+  }
+
+  .section {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 80px 24px;
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 14px;
+  }
+
+  .section h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.9rem;
+    color: var(--ink);
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+
+  .section p {
+    font-size: 1.06rem;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+  }
+
+  .drop::first-letter {
+    font-family: 'Fraunces', serif;
+    font-size: 3.6rem;
+    font-weight: 600;
+    float: left;
+    line-height: 0.8;
+    margin: 6px 10px 0 0;
+    color: var(--red);
+  }
+
+  .method-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin: 32px 0;
+  }
+  .method-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 22px 20px;
+    position: relative;
+  }
+  .method-card::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 18px;
+    width: 30px; height: 6px;
+    background: rgba(168,68,46,0.18);
+    border-radius: 0 0 2px 2px;
+  }
+  .method-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+  .method-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .method-card p {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  @media (max-width: 700px) {
+    .method-grid { grid-template-columns: 1fr; }
+  }
+
+  .diary-feed {
+    background: var(--paper);
+    padding: 90px 24px;
+  }
+
+  .diary-feed-inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .diary-feed .section-label { text-align: center; }
+  .diary-feed h2 { text-align: center; margin-bottom: 50px; }
+
+  .entry {
+    position: relative;
+    padding: 0 0 0 32px;
+    margin-bottom: 56px;
+    border-left: 1px solid var(--rule);
+  }
+  .entry:last-child { margin-bottom: 0; }
+
+  .entry::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 4px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--red);
+  }
+
+  .entry-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.74rem;
+    color: var(--gray);
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+
+  .entry h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .entry p {
+    font-size: 1rem;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+
+  .tag-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 3px;
+    background: rgba(107,122,94,0.12);
+    color: var(--sage);
+    border: 1px solid rgba(107,122,94,0.3);
+  }
+  .tag.red {
+    background: rgba(168,68,46,0.1);
+    color: var(--red);
+    border-color: rgba(168,68,46,0.28);
+  }
+
+  .read-more {
+    display: inline-block;
+    margin-top: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--red);
+    text-decoration: none;
+    border-bottom: 1px solid var(--red);
+    padding-bottom: 1px;
+  }
+
+  .about-strip {
+    background: var(--ink);
+    padding: 70px 24px;
+  }
+  .about-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    color: var(--paper);
+  }
+  .about-inner .section-label { color: #C9A98F; }
+  .about-inner h2 { color: var(--paper); }
+  .about-inner p { color: rgba(250,246,238,0.78); }
+
+  .about-meta {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(250,246,238,0.15);
+  }
+  .about-meta-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: rgba(250,246,238,0.55);
+  }
+  .about-meta-item strong {
+    color: var(--paper);
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+  }
+
+  .subscribe {
+    background: var(--paper);
+    padding: 80px 24px;
+    text-align: center;
+  }
+  .subscribe-inner { max-width: 480px; margin: 0 auto; }
+  .subscribe h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.7rem;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .subscribe p {
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+    font-size: 0.98rem;
+  }
+  .subscribe-form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .subscribe-form input {
+    font-family: 'Newsreader', serif;
+    font-size: 0.95rem;
+    padding: 12px 16px;
+    border: 1.5px solid var(--ink);
+    border-radius: 3px;
+    background: transparent;
+    color: var(--ink);
+    flex: 1;
+    min-width: 200px;
+  }
+  .subscribe-form input::placeholder { color: var(--gray); }
+  .subscribe-form button {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 12px 22px;
+    background: var(--red);
+    color: var(--paper);
+    border: 1.5px solid var(--red);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .subscribe-form button:hover { background: #8C3825; }
+
+  .footer {
+    background: var(--ink);
+    padding: 36px 24px;
+    text-align: center;
+  }
+  .footer p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: rgba(250,246,238,0.4);
+  }
+  .footer a { color: #C9A98F; text-decoration: none; }
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-title">Field Notes<span class="accent">.</span></div>
+  <div class="nav-links">
+    <a href="#project">The Project</a>
+    <a href="#entries">Entries</a>
+    <a href="#about">About</a>
+    <a href="#subscribe">Subscribe</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="notebook">
+    <div class="page page-left">
+      <span class="eyebrow">Vol. 01 &middot; Open Notebook</span>
+      <h1 class="hero-title">A live record of studying<br>how people talk to <em>AI</em><br>like it's their therapist.</h1>
+      <p class="hero-sub">Qualitative thematic analysis in progress. Public data, open process, no tidy conclusions yet.</p>
+      <div class="stamp">&#9679; In progress &middot; coding phase</div>
+      <div class="margin-note">
+        started this because<br>I kept seeing the same<br>three sentences in every<br>thread. wanted to know<br>why. &mdash; J.N.
+      </div>
+    </div>
+    <div class="page page-right">
+      <div class="entry-label">FIELD NOTE / ENTRY 001</div>
+      <p><strong>I do not yet know what I am going to find.</strong> For the next few months I am reading, coding, and sitting with public posts from people who describe using ChatGPT the way they might once have used a therapist.</p>
+      <p>This notebook is where I will think out loud while I do it: the methodology, the messy middle, the moments the data surprises me.</p>
+      <p>No primary interviews. No ethics board needed for this stage. Just careful, transparent work with what people have already chosen to share.</p>
+    </div>
+  </div>
+</section>
+
+<div class="scroll-cue">scroll to read on &darr;</div>
+
+<section class="section" id="project">
+  <span class="section-label">The Project</span>
+  <h2>Why study this at all?</h2>
+  <p class="drop">Somewhere in the last two years, a strange and under-discussed shift happened. People started describing ChatGPT not as a tool, but as something closer to a confidant. Reddit threads on r/ChatGPT, r/therapy, and r/mentalhealth are full of posts that read less like product reviews and more like testimony: relief, dependency, grief that it isn't a real person, gratitude that it is not.</p>
+  <p>I want to understand this properly rather than react to a headline about it. I am a recent psychology graduate with a research background and, for the first time, no deadline or supervisor assigning the question. So I am asking it myself.</p>
+
+  <div class="method-grid">
+    <div class="method-card">
+      <div class="method-num">01</div>
+      <h3>Data source</h3>
+      <p>Public posts from mental health and AI-related subreddits. No primary interviews, no new human subjects data collected.</p>
+    </div>
+    <div class="method-card">
+      <div class="method-num">02</div>
+      <h3>Method</h3>
+      <p>Reflexive thematic analysis, coded by hand, themes built and revised openly as the project develops.</p>
+    </div>
+    <div class="method-card">
+      <div class="method-num">03</div>
+      <h3>Where it lands</h3>
+      <p>Full paper to be published on PsyArXiv. This site documents the process alongside it, in real time.</p>
+    </div>
+  </div>
+</section>
+
+<section class="diary-feed" id="entries">
+  <div class="diary-feed-inner">
+    <span class="section-label">The Notebook</span>
+    <h2>Entries</h2>
+
+    <article class="entry">
+      <div class="entry-date">14 JUNE 2026 &middot; ENTRY 001</div>
+      <h3>Why I'm starting this, and what I'm choosing not to do</h3>
+      <p>The first decision was about what kind of researcher I wanted to be here: someone with proper guardrails, even without a university looking over my shoulder. That meant ruling out interviews for now, and committing to public, already-shared data instead.</p>
+      <div class="tag-row">
+        <span class="tag">methodology</span>
+        <span class="tag red">ethics</span>
+      </div>
+      <a class="read-more" href="#">Read the full entry &rarr;</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-date">21 JUNE 2026 &middot; ENTRY 002</div>
+      <h3>The first hundred posts, and the sentence that keeps repeating</h3>
+      <p>A pattern emerged faster than I expected. A version of "it doesn't judge me" appears in almost every thread I've coded so far. I don't yet know if that's a theme or just an easy thing to say. Sitting with that uncertainty today.</p>
+      <div class="tag-row">
+        <span class="tag">coding</span>
+        <span class="tag">early themes</span>
+      </div>
+      <a class="read-more" href="#">Read the full entry &rarr;</a>
+    </article>
+
+    <article class="entry">
+      <div class="entry-date">Coming soon</div>
+      <h3>Next entry in progress</h3>
+      <p>Check back soon, or subscribe below to get new entries as they're written.</p>
+      <div class="tag-row">
+        <span class="tag">in progress</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="about-strip" id="about">
+  <div class="about-inner">
+    <span class="section-label">About the Researcher</span>
+    <h2>Jiya Neol</h2>
+    <p>I'm a recent Psychology with Criminology graduate from Loughborough University, currently between a clinical research internship and a job search across HR and psychology. This project sits in the space my other work doesn't quite reach: genuine, self-directed curiosity, with no deadline attached to it but my own.</p>
+    <p>I previously researched resilience and stress in support workers for my dissertation, and worked across NHS HR and frontline mental health support. This is the first project that is entirely mine, from question to publication.</p>
+    <div class="about-meta">
+      <div class="about-meta-item"><strong>Status</strong>Coding phase, ongoing</div>
+      <div class="about-meta-item"><strong>Output</strong>PsyArXiv preprint</div>
+      <div class="about-meta-item"><strong>Started</strong>June 2026</div>
+    </div>
+  </div>
+</section>
+
+<section class="subscribe" id="subscribe">
+  <div class="subscribe-inner">
+    <h2>Follow the notebook</h2>
+    <p>New entries as the coding develops. No spam, no schedule, just the project as it actually happens.</p>
+    <form class="subscribe-form">
+      <input type="email" placeholder="your@email.com" aria-label="Email address">
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>Field Notes &middot; Jiya Neol, 2026 &middot; <a href="mailto:jiyaneol4@gmail.com">jiyaneol4@gmail.com</a> &middot; <a href="https://linkedin.com/in/jiya-neol">LinkedIn</a></p>
+</footer>
+
+</body>
+</html>
