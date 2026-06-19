@@ -352,6 +352,46 @@
     line-height: 1.6;
   }
 
+  .subscribe-form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .subscribe-form input {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.95rem;
+    padding: 11px 16px;
+    border: 1.5px solid var(--ink);
+    border-radius: 2px;
+    background: transparent;
+    color: var(--ink);
+    flex: 1;
+    min-width: 200px;
+  }
+  .subscribe-form input::placeholder { color: var(--gray); }
+  .subscribe-form button {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.76rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 11px 22px;
+    background: var(--accent);
+    color: var(--paper);
+    border: 1.5px solid var(--accent);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+  }
+  .subscribe-form button:hover { opacity: 0.85; }
+    font-size: 0.93rem;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+    padding-left: 1.6em;
+    text-indent: -1.6em;
+    line-height: 1.6;
+  }
+
   .revision-log {
     background: var(--box-bg);
     border: 1px solid var(--rule);
@@ -389,38 +429,6 @@
     .masthead, .nav { padding-left: 20px; padding-right: 20px; }
     .paper { padding: 40px 18px 80px; }
   }
-  .subscribe-form {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-.subscribe-form input {
-  font-family: 'Source Serif 4', serif;
-  font-size: 0.95rem;
-  padding: 11px 16px;
-  border: 1.5px solid var(--ink);
-  border-radius: 2px;
-  background: transparent;
-  color: var(--ink);
-  flex: 1;
-  min-width: 200px;
-}
-.subscribe-form input::placeholder { color: var(--gray); }
-.subscribe-form button {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.76rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 11px 22px;
-  background: var(--accent);
-  color: var(--paper);
-  border: 1.5px solid var(--accent);
-  border-radius: 2px;
-  cursor: pointer;
-  transition: opacity 0.15s ease;
-}
-.subscribe-form button:hover { opacity: 0.85; }
 </style>
 </head>
 <body>
@@ -435,6 +443,7 @@
   <a href="#reflections">Reflections</a>
   <a href="#progress">Progress</a>
   <a href="#timeline">Timeline</a>
+  <a href="#subscribe">Subscribe</a>
 </nav>
 
 <main class="paper">
@@ -471,19 +480,6 @@
       <p>I want to be transparent that this project began from professional and personal observation rather than a pre-existing gap identified through systematic review. Across roles in NHS human resources, frontline mental health support work, and academic research, I noticed a recurring pattern in informal accounts and online discourse that I have not yet found addressed with the depth I expected. Whether that impression survives contact with the actual literature is, honestly, an open question, and part of why I am doing this at all.</p>
     </div>
   </section>
-  <hr class="section-rule">
-
-<section id="subscribe">
-  <h2>Follow the Journal</h2>
-  <span class="section-meta">New entries as they're written, no schedule, no spam</span>
-
-  <p>If you want to follow this as it develops, rather than checking back yourself, leave your email and I'll send new entries as I publish them.</p>
-
-  <form class="subscribe-form">
-    <input type="email" placeholder="your@email.com" aria-label="Email address" required>
-    <button type="submit">Subscribe</button>
-  </form>
-</section>
 
   <hr class="section-rule">
 
@@ -513,7 +509,7 @@
           <span class="entry-status">Entry 01</span>
           <h4>Starting point: what I'm fascinated by and what I'm not assuming yet</h4>
           <p>The first entry in this journal, setting out the observation that started this, and a deliberate decision not to assume a literature gap before actually reading widely.</p>
-          <a class="entry-link" href="#">Read entry 01 &rarr;</a>
+          <a class="entry-link" href="entries/entry-01.html">Read entry 01 &rarr;</a>
         </div>
       </div>
 
@@ -557,6 +553,20 @@
         <p>Deciding where and how this work is best shared once findings exist, which may take a different form than currently anticipated.</p>
       </div>
     </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <section id="subscribe">
+    <h2>Follow the Journal</h2>
+    <span class="section-meta">New entries as they're written, no schedule, no spam</span>
+
+    <p>If you want to follow this as it develops rather than checking back yourself, leave your email and I will send new entries as I publish them.</p>
+
+    <form class="subscribe-form">
+      <input type="email" placeholder="your@email.com" aria-label="Email address" required>
+      <button type="submit">Subscribe</button>
+    </form>
   </section>
 
   <hr class="section-rule">
