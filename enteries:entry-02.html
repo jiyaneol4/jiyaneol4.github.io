@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entry 02: The Conversation That Started This - Field Notes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..500&family=Fraunces:ital,opsz,wght@0,9..144,500..700;1,9..144,500..600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --paper: #FBFAF7;
+    --ink: #1A1A1A;
+    --ink-soft: #3D3D3D;
+    --rule: #D8D4CB;
+    --rule-strong: #1A1A1A;
+    --accent: #7A3B2E;
+    --sage: #5C6E52;
+    --gray: #767066;
+    --box-bg: #F2EFE6;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 17px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .masthead {
+    border-bottom: 3px solid var(--rule-strong);
+    padding: 22px 40px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .masthead-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  .masthead-name a { color: var(--ink); text-decoration: none; }
+  .masthead-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  .nav {
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 40px;
+    display: flex;
+    gap: 28px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .nav a { color: var(--ink-soft); text-decoration: none; }
+  .nav a:hover { color: var(--accent); }
+
+  .entry-page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 56px 28px 100px;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--gray);
+    text-decoration: none;
+    margin-bottom: 36px;
+  }
+  .back-link:hover { color: var(--accent); }
+
+  .entry-meta-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .entry-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 3px 9px;
+    border-radius: 2px;
+  }
+  .entry-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--gray);
+  }
+
+  .entry-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(1.6rem, 3.6vw, 2.1rem);
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 30px;
+  }
+
+  .entry-page p {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+    line-height: 1.85;
+  }
+
+  .drop::first-letter {
+    font-family: 'Fraunces', serif;
+    font-size: 3.4rem;
+    font-weight: 600;
+    float: left;
+    line-height: 0.8;
+    margin: 5px 10px 0 0;
+    color: var(--accent);
+  }
+
+  h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--ink);
+    margin: 38px 0 14px;
+  }
+
+  .reflection {
+    background: var(--box-bg);
+    border-left: 3px solid var(--accent);
+    padding: 20px 26px;
+    margin: 30px 0;
+  }
+  .reflection-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+    display: block;
+  }
+  .reflection p {
+    font-style: italic;
+    margin-bottom: 0;
+  }
+  .reflection p + p { margin-top: 12px; }
+
+  .entry-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+  }
+  .entry-nav a { color: var(--accent); text-decoration: none; }
+  .entry-nav .disabled { color: var(--gray); }
+
+  .footer {
+    border-top: 3px solid var(--rule-strong);
+    padding: 30px 40px;
+    text-align: center;
+  }
+  .footer p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--gray);
+    margin: 0;
+  }
+  .footer a { color: var(--accent); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    .masthead, .nav { padding-left: 20px; padding-right: 20px; }
+    .entry-page { padding: 40px 18px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <span class="masthead-name"><a href="../index.html">Field Notes &mdash; A Reflexive Journal</a></span>
+  <span class="masthead-meta">Independent Research</span>
+</header>
+
+<nav class="nav">
+  <a href="../index.html#about">About</a>
+  <a href="../index.html#reflections">Reflections</a>
+  <a href="../index.html#progress">Progress</a>
+  <a href="../index.html#timeline">Timeline</a>
+</nav>
+
+<main class="entry-page">
+  <a class="back-link" href="../index.html#progress">&larr; Back to Progress</a>
+
+  <div class="entry-meta-row">
+    <span class="entry-num">Entry 02</span>
+    <span class="entry-date">June 2026</span>
+  </div>
+
+  <h1 class="entry-title">The conversation that started this</h1>
+
+  <p class="drop">I want to tell this properly, because I think the honest origin of a research question matters, and this one did not begin in a library or a lecture theatre. It began on a sofa, with friends, on an ordinary evening that I do not think any of us expected to remember.</p>
+
+  <p>One of my closest friends was going through something difficult with her partner. The kind of thing you talk through slowly, over the course of an evening, with the people who know you best, because you are trying to work out what you actually feel underneath what you are upset about. We were doing what we always do in those moments: listening, asking questions, gently pushing back when something did not sound quite right, trying to help her think rather than telling her what to think. It was a familiar shape of conversation. I have had some version of it more times than I can count, with this same group of people, since we were teenagers.</p>
+
+  <p>And then she said something that stopped me. She said she had described the situation to ChatGPT, and it had told her, fairly directly, that her partner was a narcissist and that what she was describing was a pattern of abuse.</p>
+
+  <p>I remember the specific feeling of that moment more clearly than I remember most of what was said afterwards. It was not outrage, and it was not dismissal. It was something closer to alarm, the kind that comes from professional instinct firing before you have consciously decided to pay attention. Because what she was describing, as she told it to us, the people who actually knew the full context, the history, the small contradictions that never make it into a single typed message, did not sound like that to me at all. It sounded like something painful and complicated and very human. It did not sound like a diagnosis. And it had been given one anyway, instantly, with total confidence, by something that had access to none of the context we did.</p>
+
+  <h3>Why that specific moment, and not any other</h3>
+
+  <p>I want to be honest about why this landed the way it did for me, specifically, because I do not think it would have affected everyone in that room the same way, and I do not think it should have.</p>
+
+  <p>By that point I had already spent a year inside an NHS HR team, sitting in on conversations where the language of mental health and diagnosis was used carefully, deliberately, by people with training and accountability, precisely because the words matter and the stakes of getting them wrong are real. I had also, separately, spent time directly supporting people experiencing trauma and complex relational harm in my work at Falcon Support Services, where I had seen, up close, what it actually looks like when someone is in a genuinely abusive relationship: the particular kind of fear, the specific patterns of control, the slow erosion of someone's confidence in their own perception of events. I had also seen the version of distress that looks similar on the surface but is not that, ordinary relationship pain, incompatibility, two people who love each other and are still, nonetheless, not right for each other.</p>
+
+  <p>Telling those apart is hard. It is hard for trained professionals, working with full context, over multiple sessions, with supervision available to check their own judgement. It is not a label you can respectfully arrive at from a single one-sided message typed into a chat window at midnight.</p>
+
+  <p>That is what unsettled me. Not that AI had said something wrong, exactly, but that it had said something with such total, frictionless confidence, in a context that called for the opposite of confidence. Real care in that situation looks like curiosity, more questions, sitting with uncertainty. What my friend received instead was a verdict.</p>
+
+  <div class="reflection">
+    <span class="reflection-label">Sitting with this honestly</span>
+    <p>I want to be careful here not to flatten my friend's experience into a research anecdote, because that is not what it was to her, and it should not become that retroactively just because it happened to be the moment that caught my professional attention. She was hurting, and she was trying to find some way to make sense of that hurt, and reaching for whatever tool was immediately available to help her do that is an entirely understandable thing to do at one in the morning when no one else is awake to talk to.</p>
+      <p>That, if anything, is closer to the actual question underneath this whole project. Not whether the AI was right or wrong in that one instance, but what it means that it was the thing available at one in the morning, and what that says about what we have and have not built for people in those moments.</p>
+  </div>
+
+  <h3>Falling down the rest of it</h3>
+
+  <p>After that evening I did what I suspect most people in my position would do. I went looking, first out of personal curiosity about whether this was a one-off, and then with growing unease as I realised it very much was not.</p>
+
+  <p>I spent longer than I expected to scrolling through Reddit threads where people described, in their own words, what it was like to use ChatGPT this way. Some of it was genuinely moving. People who described feeling heard for the first time in a long time, at a cost and a time of day that no human therapist could ever match. People managing chronic loneliness, or living somewhere with no access to mental health services at all, describing real relief. I do not want this project to start from a place of dismissing that, because I think it is real, and I think it matters, and I do not think it deserves to be waved away by someone like me simply because I have the privilege of better access to the alternative.</p>
+
+  <p>But alongside that, I found exactly the pattern my friend had stumbled into, repeated over and over, in threads and comments from people who had no way of knowing whether what they were being told was sound. Confident diagnostic language. Words like narcissist, gaslighting, abuse, used with total certainty, attached to situations that, as far as a stranger reading a few paragraphs could tell, may or may not have warranted them. And running underneath nearly all of it, in the news coverage I read alongside the personal accounts, a kind of low background fear about AI in general that I think makes this even harder to look at clearly. It is difficult to ask a careful, curious question about something when the public conversation around it is already split between breathless evangelism and outright panic, with very little space in between for simply not knowing yet.</p>
+
+  <p>I did not finish that research spiral with an answer. I finished it with a feeling I still have not fully shaken, somewhere between concern and fascination, and a question I could not put down. Which is, I think, exactly how a research question is supposed to arrive. Not assigned. Encountered.</p>
+
+  <h3>What I am carrying into this project because of that evening</h3>
+
+  <p>I do not want this study to be an exercise in proving that AI chatbots are dangerous, because I do not actually believe that is straightforwardly true, and I think research that sets out to confirm what it already suspects is usually bad research. But I also do not want to sand down the discomfort of that evening into something neutral and abstract, because the discomfort is real, and I think it is honest, and I think it is shared by far more people than are currently saying so out loud.</p>
+
+  <p>What I want to understand, properly, with actual evidence rather than one charged memory of a friend on a sofa, is what is actually happening in that gap. Between the genuine comfort people describe finding in these conversations, and the genuine risk of a confident, contextless verdict landing on someone at exactly the moment they are least equipped to question it. I suspect the answer is not that one side is right and the other is wrong. I suspect it is more complicated, and more interesting, than that. But I would not be starting this project at all if it were not for that specific evening, that specific sentence, and the specific, immediate sense I had that something important and slightly frightening was happening in plain sight, almost entirely undiscussed.</p>
+
+  <p>That is the honest beginning. Everything else in this journal builds outward from that sofa.</p>
+
+  <div class="entry-nav">
+    <a href="entry-01.html">&larr; Entry 01</a>
+    <span class="disabled">Entry 03 coming soon</span>
+  </div>
+</main>
+
+<footer class="footer">
+  <p>Field Notes &middot; Jiya Neol, 2026 &middot; <a href="mailto:jiyaneol4@gmail.com">jiyaneol4@gmail.com</a> &middot; <a href="https://linkedin.com/in/jiya-neol">LinkedIn</a></p>
+</footer>
+
+</body>
+</html>
