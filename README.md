@@ -6,7 +6,7 @@ A live, public research diary documenting an independent qualitative study on ho
 
 This is a self-directed research project conducted using reflexive thematic analysis of publicly available Reddit posts. No primary human subjects data is collected, in line with ethical best practice for independent research without institutional review board access.
 
-The final paper will be published as a preprint on PsyArXiv. This site documents the research process as it unfolds, including methodology decisions, early coding, and reflections along the way.
+This site documents the research process as it unfolds, including methodology decisions, early coding, and reflections along the way.
 
 ## Live site
 
