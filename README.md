@@ -1,4 +1,4 @@
-# Field Notes: AI & the Therapy Room
+# Field Notes: AI chatbots & the Therapy Room
 
 A live, public research diary documenting an independent qualitative study on how people describe using ChatGPT and AI chatbots as a substitute for therapy.
 
@@ -14,6 +14,6 @@ View the project at [jiyaneol4.github.io](https://jiyaneol4.github.io)
 
 ## About the researcher
 
-Jiya Neol is a recent graduate in Psychology with Criminology (BPS accredited) from Loughborough University, with research experience in qualitative and quantitative methods, NHS HR, and frontline mental health support work.
+I am a recent graduate in Psychology with Criminology, with research experience in qualitative and quantitative methods and frontline mental health support work.
 
-[LinkedIn](https://linkedin.com/in/jiya-neol) · jiyaneol4@gmail.com
+[LinkedIn](https://linkedin.com/in/jiya-neol) 
